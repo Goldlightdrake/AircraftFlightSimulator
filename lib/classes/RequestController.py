@@ -39,8 +39,16 @@ class RequestController:
         return d
 
 test = RequestController('https://opensky-network.org/api/states/all')
-print(test.request())
+#print(test.request())
+europe = ['Poland', 'Austria', 'Germany', 'France', 'Switzerland', 'Hungary', 'Slovakia', 'Portugal', 'Ireland', 'United Kingdom', 'Luxembourg','Italy', 'Malta', 'Spain', 'Netherlands']
+airplanes = test.request()
+i = 0
+for s in airplanes:
+    if s['country'] in europe:
+        # print(s)
+        i += 1
 
+print('how much: ', i)
 
 
 
