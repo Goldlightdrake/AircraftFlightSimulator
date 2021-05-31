@@ -3,10 +3,9 @@ import math
 
 class Vector:
     def __init__(self, x: float, y: float):
-        self.x = x
-        self.y = y
+        self.x = float(x)
+        self.y = float(y)
 
-    # Vector operator overloads
     def __add__(self, other):
         if isinstance(other, self.__class__):
             return Vector(self.x + other.x, self.y + other.y)

@@ -1,4 +1,12 @@
 class MapHolder:
+    '''
+    MapHolder class made for maintaining gui map for whole time object is holding:
+    - List of airports (showing on map)
+    - List of aircrafts (showing on map)
+    - Selected aircraft (selected by user throw gui)
+    - Selected airplane (selected by user throw gui)
+    example init: MapHolder()
+    '''
     def __init__(self):
         self.__list_of_airports = []
         self.__list_of_aircrafts = []
