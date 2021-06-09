@@ -7,15 +7,19 @@ class Airport:
     @property
     def name(self):
         return self.__name
+
     @name.setter
     def name(self, name):
         self.__name = name
+
     @property
     def position(self):
         return self.__position
+
     @position.setter
     def position(self, position):
-        self.__position.append() #double
+        self.__position.append(position)
+
     @property
     def get_list_of_aircrafts(self):
         return self.__list_of_aircrafts
