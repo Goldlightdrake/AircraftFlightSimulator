@@ -1,11 +1,12 @@
 import pygame
 from menu import *
+from lib.classes.MapHolder import MapHolder
 
 
 class Simulation():
     def __init__(self):
         pygame.init()
-        self.running, self.playing = True, False
+        self.running, self.simulating = True, False
         self.UP_KEY, self.DOWN_KEY, self.START_KEY, self.BACK_KEY = False, False, False, False
         self.DISPLAY_W, self.DISPLAY_H = 1280, 720
         self.display = pygame.Surface((self.DISPLAY_W,self.DISPLAY_H))
@@ -17,12 +18,13 @@ class Simulation():
         self.options = OptionsMenu(self)
         self.credits = CreditsMenu(self)
         self.curr_menu = self.main_menu
+        self.map_holder = MapHolder()
 
-    def game_loop(self):
-        while self.playing:
+    def simulation_loop(self):
+        while self.simulating:
             self.check_events()
             if self.START_KEY:
-                self.playing= False
+                self.simulating= False
             self.display.fill(self.BLACK)
             self.draw_text('Tu rozpocznie się symulacja...', 20, self.DISPLAY_W/2, self.DISPLAY_H/2)
             self.window.blit(self.display, (0,0))
@@ -34,7 +36,7 @@ class Simulation():
     def check_events(self):
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
-                self.running, self.playing = False, False
+                self.running, self.simulating = False, False
                 self.curr_menu.run_display = False
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_RETURN:

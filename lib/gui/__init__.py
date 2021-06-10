@@ -1,7 +1,7 @@
 from simulation import Simulation
 
-g = Simulation()
+s = Simulation()
 
-while g.running:
-    g.curr_menu.display_menu()
-    g.game_loop()
+while s.running:
+    s.curr_menu.display_menu()
+    s.simulation_loop()

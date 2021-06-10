@@ -1,20 +1,20 @@
 import pygame
 
 class Menu():
-    def __init__(self, game):
-        self.game = game
-        self.mid_w, self.mid_h = self.game.DISPLAY_W / 2, self.game.DISPLAY_H / 2
+    def __init__(self, simulation):
+        self.simulation = simulation
+        self.mid_w, self.mid_h = self.simulation.DISPLAY_W / 2, self.simulation.DISPLAY_H / 2
         self.run_display = True
         self.cursor_rect = pygame.Rect(0, 0, 50, 20)
         self.offset = - 100
 
     def draw_cursor(self):
-        self.game.draw_text('*', 15, self.cursor_rect.x, self.cursor_rect.y)
+        self.simulation.draw_text('*', 15, self.cursor_rect.x, self.cursor_rect.y)
 
     def blit_screen(self):
-        self.game.window.blit(self.game.display, (0, 0))
+        self.simulation.window.blit(self.simulation.display, (0, 0))
         pygame.display.update()
-        self.game.reset_keys()
+        self.simulation.reset_keys()
 
 class MainMenu(Menu):
     def __init__(self, game):
@@ -28,19 +28,19 @@ class MainMenu(Menu):
     def display_menu(self):
         self.run_display = True
         while self.run_display:
-            self.game.check_events()
+            self.simulation.check_events()
             self.check_input()
-            self.game.display.fill(self.game.BLACK)
-            self.game.draw_text('Aircraft Scanner Simulator', 25, self.game.DISPLAY_W / 2, self.game.DISPLAY_H / 2 - 20)
-            self.game.draw_text("Rozpocznij symulacje", 20, self.startx, self.starty)
-            self.game.draw_text("Opcje", 20, self.optionsx, self.optionsy)
-            self.game.draw_text("Autorzy", 20, self.creditsx, self.creditsy)
+            self.simulation.display.fill(self.simulation.BLACK)
+            self.simulation.draw_text('Aircraft Scanner Simulator', 25, self.simulation.DISPLAY_W / 2, self.simulation.DISPLAY_H / 2 - 20)
+            self.simulation.draw_text("Rozpocznij symulacje", 20, self.startx, self.starty)
+            self.simulation.draw_text("Opcje", 20, self.optionsx, self.optionsy)
+            self.simulation.draw_text("Autorzy", 20, self.creditsx, self.creditsy)
             self.draw_cursor()
             self.blit_screen()
 
 
     def move_cursor(self):
-        if self.game.DOWN_KEY:
+        if self.simulation.DOWN_KEY:
             if self.state == 'Start':
                 self.cursor_rect.midtop = (self.optionsx + self.offset, self.optionsy)
                 self.state = 'Options'
@@ -50,7 +50,7 @@ class MainMenu(Menu):
             elif self.state == 'Credits':
                 self.cursor_rect.midtop = (self.startx + self.offset, self.starty)
                 self.state = 'Start'
-        elif self.game.UP_KEY:
+        elif self.simulation.UP_KEY:
             if self.state == 'Start':
                 self.cursor_rect.midtop = (self.creditsx + self.offset, self.creditsy)
                 self.state = 'Credits'
@@ -63,13 +63,13 @@ class MainMenu(Menu):
 
     def check_input(self):
         self.move_cursor()
-        if self.game.START_KEY:
+        if self.simulation.START_KEY:
             if self.state == 'Start':
-                self.game.playing = True
+                self.simulation.simulating = True
             elif self.state == 'Options':
-                self.game.curr_menu = self.game.options
+                self.simulation.curr_menu = self.simulation.options
             elif self.state == 'Credits':
-                self.game.curr_menu = self.game.credits
+                self.simulation.curr_menu = self.simulation.credits
             self.run_display = False
 
 class OptionsMenu(Menu):
@@ -83,27 +83,27 @@ class OptionsMenu(Menu):
     def display_menu(self):
         self.run_display = True
         while self.run_display:
-            self.game.check_events()
+            self.simulation.check_events()
             self.check_input()
-            self.game.display.fill((0, 0, 0))
-            self.game.draw_text("Opcje", 20, self.game.DISPLAY_W / 2, self.game.DISPLAY_H / 2 - 30)
-            self.game.draw_text("Głośność", 15, self.volx, self.voly)
-            self.game.draw_text("Kontrola", 15, self.controlsx, self.controlsy)
+            self.simulation.display.fill((0, 0, 0))
+            self.simulation.draw_text("Opcje", 20, self.simulation.DISPLAY_W / 2, self.simulation.DISPLAY_H / 2 - 30)
+            self.simulation.draw_text("Głośność", 15, self.volx, self.voly)
+            self.simulation.draw_text("Kontrola", 15, self.controlsx, self.controlsy)
             self.draw_cursor()
             self.blit_screen()
 
     def check_input(self):
-        if self.game.BACK_KEY:
-            self.game.curr_menu = self.game.main_menu
+        if self.simulation.BACK_KEY:
+            self.simulation.curr_menu = self.simulation.main_menu
             self.run_display = False
-        elif self.game.UP_KEY or self.game.DOWN_KEY:
+        elif self.simulation.UP_KEY or self.simulation.DOWN_KEY:
             if self.state == 'Volume':
                 self.state = 'Controls'
                 self.cursor_rect.midtop = (self.controlsx + self.offset, self.controlsy)
             elif self.state == 'Controls':
                 self.state = 'Volume'
                 self.cursor_rect.midtop = (self.volx + self.offset, self.voly)
-        elif self.game.START_KEY:
+        elif self.simulation.START_KEY:
             # TO-DO: Create a Volume Menu and a Controls Menu
             pass
 
@@ -114,12 +114,12 @@ class CreditsMenu(Menu):
     def display_menu(self):
         self.run_display = True
         while self.run_display:
-            self.game.check_events()
-            if self.game.START_KEY or self.game.BACK_KEY:
-                self.game.curr_menu = self.game.main_menu
+            self.simulation.check_events()
+            if self.simulation.START_KEY or self.simulation.BACK_KEY:
+                self.simulation.curr_menu = self.simulation.main_menu
                 self.run_display = False
-            self.game.display.fill(self.game.BLACK)
-            self.game.draw_text('Autorzy', 35, self.game.DISPLAY_W / 2, self.game.DISPLAY_H / 2 - 20)
-            self.game.draw_text('Piotr Graczyk', 20, self.game.DISPLAY_W / 2, self.game.DISPLAY_H / 2 + 30)
-            self.game.draw_text('Zofia Żukowicz', 20, self.game.DISPLAY_W / 2, self.game.DISPLAY_H / 2 + 60)
+            self.simulation.display.fill(self.simulation.BLACK)
+            self.simulation.draw_text('Autorzy', 35, self.simulation.DISPLAY_W / 2, self.simulation.DISPLAY_H / 2 - 20)
+            self.simulation.draw_text('Piotr Graczyk', 20, self.simulation.DISPLAY_W / 2, self.simulation.DISPLAY_H / 2 + 30)
+            self.simulation.draw_text('Zofia Żukowicz', 20, self.simulation.DISPLAY_W / 2, self.simulation.DISPLAY_H / 2 + 60)
             self.blit_screen()
