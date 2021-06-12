@@ -10,11 +10,12 @@ class Aircraft(FlyingMashine):
         return f"Aircraft [ {super().__str__()} ]"
 
     @staticmethod
-    def from_dict(dict, start_position):
+    def from_dict(map, start_position):
+        print(map)
         return Aircraft(
-            id=dict['icao24'],
-            name=dict['callsign'],
-            departure_time=dict['firstSeen'],
-            goal_airport=dict['estArrivalAirport'],
+            id=map['icao24'],
+            name=map['callsign'],
+            departure_time=map['firstSeen'],
+            goal_airport=map['estArrivalAirport'],
             position=start_position
         )

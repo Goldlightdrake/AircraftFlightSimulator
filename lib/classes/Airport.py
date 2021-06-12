@@ -1,4 +1,5 @@
 import time
+import asyncio
 
 from lib.classes.RequestController import RequestController
 from lib.classes.Aircraft import Aircraft
@@ -28,14 +29,14 @@ class Airport():
     def position(self, position):
         self.__position = position
 
+    @property
     def get_list_of_aircrafts(self):
         return self.__list_of_aircrafts
 
     def generate_list_of_aircrafts(self):
-        request_controller = RequestController(api='https://opensky-network.org/api/flights/departure?')
+        request_controller = RequestController(api='https://opensky-network.org/api/flights/departure')
         request_data = request_controller.request(self.__name)
         for aircraft_data in request_data:
-            print(aircraft_data)
             self.__list_of_aircrafts.append(Aircraft.from_dict(aircraft_data, self.__position,))
 
     def __send_out_aircraft(self):

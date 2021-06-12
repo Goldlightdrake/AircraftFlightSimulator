@@ -5,7 +5,7 @@ import requests
 class RequestController:
     """
     RequestController class made for using API inside application
-    example init: RequestController("https://opensky-network.org/api/flights/departure?")
+    example init: RequestController("https://opensky-network.org/api/flights/departure")
     """
 
     def __init__(self, api: str):

@@ -1,3 +1,5 @@
+import asyncio
+
 from lib.gui.airport_view import AirportView
 from menu import *
 from lib.classes.MapHolder import MapHolder
@@ -74,7 +76,8 @@ class Simulation():
         self.window.fill(self.BLACK)
         pygame.display.update()
         self.map_holder.selected_airport.generate_list_of_aircrafts()
-        print(self.map_holder.selected_airport.get_list_of_aircrafts)
+        for i in self.map_holder.selected_airport.get_list_of_aircrafts:
+            print(i)
         while run:
             self.clock.tick(60)
             self.check_events()
