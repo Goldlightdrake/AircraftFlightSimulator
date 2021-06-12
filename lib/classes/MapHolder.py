@@ -29,6 +29,20 @@ class MapHolder:
             Airport('EHAM', (500, 410)),
             Airport('UUEE', (920, 320)),
             Airport('UKBB', (855, 420)),
+            Airport('BIKF', (270, 150)),
+            Airport('EFHK', (720, 255)),
+            Airport('EETN', (715, 290)),
+            Airport('EVRA', (745, 315)),
+            Airport('EYVI', (760, 355)),
+            Airport('UMMS', (800, 370)),
+            Airport('ULLI', (810, 255)),
+            Airport('LHBP', (710, 490)),
+            Airport('LDZA', (665, 520)),
+            Airport('LSZH', (550, 495)),
+            Airport('EBBR', (490, 435)),
+            Airport('LTAI', (955, 625)),
+            Airport('LTAC', (980, 580)),
+            Airport('LTBJ', (885, 620))
 
         ]
         self.__list_of_aircrafts = []
