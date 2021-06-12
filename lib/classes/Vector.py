@@ -70,6 +70,3 @@ def length(vec):
 
 def dist(vec1, vec2):
     return length(vec1 - vec2)
-
-
-

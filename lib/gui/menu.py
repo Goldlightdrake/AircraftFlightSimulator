@@ -17,8 +17,8 @@ class Menu():
         self.simulation.reset_keys()
 
 class MainMenu(Menu):
-    def __init__(self, game):
-        Menu.__init__(self, game)
+    def __init__(self, simulation):
+        Menu.__init__(self, simulation)
         self.state = "Start"
         self.startx, self.starty = self.mid_w, self.mid_h + 35
         self.optionsx, self.optionsy = self.mid_w, self.mid_h + 55
@@ -73,8 +73,8 @@ class MainMenu(Menu):
             self.run_display = False
 
 class OptionsMenu(Menu):
-    def __init__(self, game):
-        Menu.__init__(self, game)
+    def __init__(self, simulation):
+        Menu.__init__(self, simulation)
         self.state = 'Volume'
         self.volx, self.voly = self.mid_w, self.mid_h + 20
         self.controlsx, self.controlsy = self.mid_w, self.mid_h + 40
@@ -108,8 +108,8 @@ class OptionsMenu(Menu):
             pass
 
 class CreditsMenu(Menu):
-    def __init__(self, game):
-        Menu.__init__(self, game)
+    def __init__(self, simulation):
+        Menu.__init__(self, simulation)
 
     def display_menu(self):
         self.run_display = True

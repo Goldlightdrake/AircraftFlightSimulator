@@ -1,14 +1,20 @@
 import time
 
-from RequestController import RequestController
-from Aircraft import Aircraft
+from lib.classes.RequestController import RequestController
+from lib.classes.Aircraft import Aircraft
 
 
-class Airport:
+class Airport():
     def __init__(self, name: str, position: tuple):
         self.__name = name
         self.__position = position
         self.__list_of_aircrafts = []
+
+    def __str__(self):
+        return f'Airport [ name={self.__name}, position={self.__position}, list_of_aircrafts={self.__list_of_aircrafts} ] '
+
+    def __repr__(self):
+        return f'Airport [ name={self.__name}, position={self.__position} ] '
 
     @property
     def name(self):
@@ -36,3 +42,4 @@ class Airport:
         for aircraft in self.__list_of_aircrafts:
             if aircraft.get_departurture_time() == time.time():
                 aircraft.lodge()
+

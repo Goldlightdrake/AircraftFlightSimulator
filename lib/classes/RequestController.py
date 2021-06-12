@@ -17,9 +17,11 @@ class RequestController:
         begin = int(begin_date.replace(tzinfo=datetime.timezone.utc).timestamp())
         end = int(end_date.replace(tzinfo=datetime.timezone.utc).timestamp())
         if begin <= end:
-            r = self.__api + f'airport={airport}&begin={begin}&end={end}'
+            r = self.__api + f'?airport={airport}&begin={begin}&end={end}'
             data_json = requests.get(r).json()
             return data_json
         else:
             print('Begin date is later then end date!')
             return dict()
+
+print(RequestController(api='https://opensky-network.org/api/flights/departure').request('CHI'))

@@ -1,3 +1,5 @@
+from lib.classes.Airport import Airport
+
 class MapHolder:
     """
     MapHolder class made for maintaining gui map for whole time object is holding:
@@ -9,14 +11,17 @@ class MapHolder:
     """
 
     def __init__(self):
-        self.__list_of_airports = []
+        self.__list_of_airports = [
+            Airport('EDDF', (550,465)),
+            Airport('EPWA', (730,415)),
+        ]
         self.__list_of_aircrafts = []
         self.__selected_aircraft = None
         self.__selected_airport = None
 
     @property
     def list_of_airports(self):
-        return self.__list_of_aircrafts
+        return self.__list_of_airports
 
     @list_of_airports.setter
     def list_of_airports(self, list_of_airports):
