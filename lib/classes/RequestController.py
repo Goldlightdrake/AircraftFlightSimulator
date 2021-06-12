@@ -24,4 +24,3 @@ class RequestController:
             print('Begin date is later then end date!')
             return dict()
 
-print(RequestController(api='https://opensky-network.org/api/flights/departure').request('CHI'))

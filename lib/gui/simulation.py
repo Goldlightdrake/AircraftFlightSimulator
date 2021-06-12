@@ -24,8 +24,6 @@ class Simulation():
         self.clock = pygame.time.Clock()
         self.background_image = pygame.transform.scale(pygame.image.load("../gui/assets/background.jpg"), (self.DISPLAY_W, self.DISPLAY_H))
 
-
-
     def simulation_loop(self):
         self.draw_background()
         while self.simulating:
@@ -58,7 +56,6 @@ class Simulation():
                         rect = pygame.Rect(airport.position[0], airport.position[1], 25, 25)
                         if rect.collidepoint(x, y):
                             self.map_holder.selected_airport = airport
-                            print(self.map_holder.selected_airport)
                             self.user_selecting_aircraft()
 
 
@@ -76,6 +73,8 @@ class Simulation():
         run = True
         self.window.fill(self.BLACK)
         pygame.display.update()
+        self.map_holder.selected_airport.generate_list_of_aircrafts()
+        print(self.map_holder.selected_airport.get_list_of_aircrafts)
         while run:
             self.clock.tick(60)
             self.check_events()
