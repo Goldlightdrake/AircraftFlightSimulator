@@ -12,8 +12,38 @@ class MapHolder:
 
     def __init__(self):
         self.__list_of_airports = [
-            Airport('EDDF', (550,465)),
-            Airport('EPWA', (730,415)),
+            Airport('EDDF', (545, 452)),
+            Airport('EPWA', (725, 410)),
+            Airport('LFPG', (450, 470)),
+            Airport('LEMD', (320, 600)),
+            Airport('EGLL', (415, 410)),
+            Airport('LPPT', (240, 600)),
+            Airport('LIRF', (618, 580)),
+            Airport('EIDW', (330, 370)),
+            Airport('LGAV', (820, 630)),
+            Airport('LTFM', (900, 570)),
+            Airport('ENGM', (568, 282)),
+            Airport('LKPR', (640, 440)),
+            Airport('ESSA', (645, 292)),
+            Airport('LOWW', (655, 480)),
+            Airport('EHAM', (500, 410)),
+            Airport('UUEE', (920, 320)),
+            Airport('UKBB', (855, 420)),
+            Airport('BIKF', (270, 150)),
+            Airport('EFHK', (720, 255)),
+            Airport('EETN', (715, 290)),
+            Airport('EVRA', (745, 315)),
+            Airport('EYVI', (760, 355)),
+            Airport('UMMS', (800, 370)),
+            Airport('ULLI', (810, 255)),
+            Airport('LHBP', (710, 490)),
+            Airport('LDZA', (665, 520)),
+            Airport('LSZH', (550, 495)),
+            Airport('EBBR', (490, 435)),
+            Airport('LTAI', (955, 625)),
+            Airport('LTAC', (980, 580)),
+            Airport('LTBJ', (885, 620))
+
         ]
         self.__list_of_aircrafts = []
         self.__selected_aircraft = None

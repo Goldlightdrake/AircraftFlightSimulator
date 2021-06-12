@@ -9,9 +9,47 @@ class Aircraft(FlyingMashine):
     def __str__(self):
         return f"Aircraft [ {super().__str__()} ]"
 
+    @property
+    def id(self):
+        return self.id
+
+    @id.setter
+    def id(self, id):
+        self.id = id
+
+    @property
+    def name(self):
+        return self.name
+
+    @name.setter
+    def name(self, name):
+        self.name = name
+
+    @property
+    def departure_time(self):
+        return self.departure_time
+
+    @departure_time.setter
+    def departure_time(self, departure_time):
+        self.departure_time = departure_time
+    @property
+    def goal_airport(self):
+        return self.goal_airport
+
+    @goal_airport.setter
+    def goal_airport(self, goal_airport):
+        self.goal_airport= goal_airport
+
+    @property
+    def position(self):
+        return self.position
+
+    @position.setter
+    def position(self, position):
+        self.position.append(position)
+
     @staticmethod
     def from_dict(map, start_position):
-        print(map)
         return Aircraft(
             id=map['icao24'],
             name=map['callsign'],
