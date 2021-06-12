@@ -2,7 +2,7 @@ import asyncio
 
 
 from lib.gui.airport_view import AirportView
-from menu import *
+from lib.gui.menu import *
 from lib.classes.MapHolder import MapHolder
 from pgu import gui
 from lib.classes.Aircraft import Aircraft
@@ -12,6 +12,8 @@ from lib.classes.Aircraft import Aircraft
 class Simulation():
     def __init__(self):
         pygame.init()
+        # pygame.display.set_icon(pygame.image.load(''))
+        pygame.display.set_caption("Aircraft Scanner Simulator")
         self.running, self.simulating = True, False
         self.UP_KEY, self.DOWN_KEY, self.START_KEY, self.BACK_KEY = False, False, False, False
         self.DISPLAY_W, self.DISPLAY_H = 1280, 720
@@ -26,7 +28,7 @@ class Simulation():
         self.curr_menu = self.main_menu
         self.map_holder = MapHolder()
         self.clock = pygame.time.Clock()
-        self.background_image = pygame.transform.scale(pygame.image.load("../gui/assets/background.jpg"), (self.DISPLAY_W, self.DISPLAY_H))
+        self.background_image = pygame.transform.scale(pygame.image.load("./assets/background.jpg"), (self.DISPLAY_W, self.DISPLAY_H))
 
     def simulation_loop(self):
         self.draw_background()

@@ -1,2 +1,4 @@
+import lib.gui
+
 if __name__ == "__main__":
-    print('aircraft scanner simulator!')
+   print('Airport Scanner Simulator running...')
