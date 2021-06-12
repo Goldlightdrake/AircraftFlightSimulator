@@ -28,7 +28,7 @@ class MapHolder:
             Airport('LOWW', (655, 480)),
             Airport('EHAM', (500, 410)),
             Airport('UUEE', (920, 320)),
-            Airport('UKBB', (855, 420))
+            Airport('UKBB', (855, 420)),
 
         ]
         self.__list_of_aircrafts = []
