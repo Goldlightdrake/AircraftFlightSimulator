@@ -13,20 +13,25 @@ class FlyingMashine(ABC):
     def __str__(self):
         return f"id={self.__id}, name={self.__name}, departure_time={self.__departure_time}, goal_airport={self.__goal_airport}, position={self.__position}"
 
-    def get_name(self):
-        pass
+    @property
+    def name(self):
+        return self.__name
 
-    def get_departurture_time(self):
-        pass
+    @property
+    def departure_time(self):
+        return self.__departure_time
 
-    def get_goal_airport(self):
-        pass
+    @property
+    def goal_airport(self):
+        return self.__goal_airport
 
-    def get_position(self):
-        pass
+    @property
+    def position(self):
+        return self.__position
 
-    def change_position(self):
-        pass
+    @position.setter
+    def position(self, new_position):
+        self.__position = new_position
 
     def lodge(self):
         self.__flying = True
