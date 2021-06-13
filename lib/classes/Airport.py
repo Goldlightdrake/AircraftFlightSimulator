@@ -1,15 +1,19 @@
 import time
 import asyncio
 
+import pygame
+
 from lib.classes.RequestController import RequestController
 from lib.classes.Aircraft import Aircraft
+from lib.classes.Vector import Vector
 
 
 class Airport():
-    def __init__(self, name: str, position: tuple):
+    def __init__(self, name: str, position: Vector):
         self.__name = name
         self.__position = position
         self.__list_of_aircrafts = []
+        self.airport_icon = pygame.transform.scale(pygame.image.load('./assets/airport_icon.png').convert_alpha(), (25, 25))
 
     def __str__(self):
         return f'Airport [ name={self.__name}, position={self.__position}, list_of_aircrafts={self.__list_of_aircrafts} ] '
@@ -44,3 +48,6 @@ class Airport():
             if aircraft.get_departurture_time() == time.time():
                 aircraft.lodge()
 
+    def draw(self, window):
+        self.rect = pygame.Rect(self.position.x, self.position.y, 25, 25)
+        window.blit(self.airport_icon, self.airport_icon.get_rect(center=self.rect.center))

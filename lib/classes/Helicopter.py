@@ -1,4 +1,4 @@
-from lib.classes.FlyingMashine import FlyingMashine
+from lib.classes.FlyingMachine import FlyingMashine
 
 
 class Helicopter(FlyingMashine):

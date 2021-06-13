@@ -40,6 +40,8 @@ class Vector:
     def make_int_tuple(self):
         return int(self.x), int(self.y)
 
+    def rounded(self):
+        return Vector(round(self.x), round(self.y))
     def set(self, vec):
         self.x = vec.x
         self.y = vec.y
@@ -70,3 +72,6 @@ def length(vec):
 
 def dist(vec1, vec2):
     return length(vec1 - vec2)
+
+def copy(vec):
+    return Vector(vec.x, vec.y)
