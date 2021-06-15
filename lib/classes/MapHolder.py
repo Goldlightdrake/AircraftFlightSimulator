@@ -1,3 +1,5 @@
+import datetime
+
 from lib.classes.Aircraft import Aircraft
 from lib.classes.Airport import Airport
 from lib.classes.Vector import Vector
@@ -57,7 +59,7 @@ class MapHolder:
         return self.__list_of_airports
 
     @list_of_airports.setter
-    def list_of_airports(self, list_of_airports):
+    def list_of_airports(self, list_of_airports: list[Airport]):
         self.__list_of_airports = list_of_airports
 
     @property
@@ -67,10 +69,12 @@ class MapHolder:
     def put_aircraft_into_map(self):
         if self.__selected_airport is not None:
             for aircraft in self.__selected_airport.get_list_of_aircrafts:
+                if aircraft == self.__selected_aircraft:
+                    aircraft.selected = True
                 if aircraft.flying and len(self.__selected_airport.get_list_of_aircrafts) > len(self.__list_of_aircrafts):
                     self.__list_of_aircrafts.append(aircraft)
 
-    def remove_aircraft_from_map(self, aircraft):
+    def remove_aircraft_from_map(self, aircraft: Aircraft):
         self.__list_of_aircrafts.remove(aircraft)
 
     @property
@@ -78,7 +82,7 @@ class MapHolder:
         return self.__selected_aircraft
 
     @selected_aircraft.setter
-    def selected_aircraft(self, aircraft):
+    def selected_aircraft(self, aircraft: Aircraft):
         self.__selected_aircraft = aircraft
 
     @property
@@ -86,5 +90,5 @@ class MapHolder:
         return self.__selected_airport
 
     @selected_airport.setter
-    def selected_airport(self, airport):
+    def selected_airport(self, airport: Airport):
         self.__selected_airport = airport

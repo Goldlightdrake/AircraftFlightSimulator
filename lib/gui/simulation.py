@@ -36,10 +36,11 @@ class Simulation():
     def simulation_loop(self):
         self.draw_background()
         while self.simulating:
-            self.clock.tick(30)
+            self.clock.tick(60)
             if self.map_holder.selected_aircraft is not None:
                 self.aircraft_flying_logic()
                 if self.map_holder.selected_aircraft not in self.map_holder.list_of_aircrafts:
+                    self.map_holder = MapHolder()
                     self.simulating = False
             self.draw_background()
             self.draw_aircrafts()

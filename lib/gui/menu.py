@@ -20,17 +20,18 @@ class MainMenu(Menu):
     def __init__(self, simulation):
         Menu.__init__(self, simulation)
         self.state = "Start"
-        self.startx, self.starty = self.mid_w, self.mid_h + 35
-        self.optionsx, self.optionsy = self.mid_w, self.mid_h + 55
-        self.creditsx, self.creditsy = self.mid_w, self.mid_h + 75
+        self.startx, self.starty = self.mid_w, self.mid_h + 40
+        self.optionsx, self.optionsy = self.mid_w, self.mid_h + 70
+        self.creditsx, self.creditsy = self.mid_w, self.mid_h + 100
         self.cursor_rect.midtop = (self.startx + self.offset, self.starty)
+        self.menu_background = pygame.transform.scale(pygame.image.load("./assets/menu_background.jpg"), (self.simulation.DISPLAY_W, self.simulation.DISPLAY_H))
 
     def display_menu(self):
         self.run_display = True
         while self.run_display:
             self.simulation.check_events()
             self.check_input()
-            self.simulation.display.fill(self.simulation.BLACK)
+            self.simulation.display.blit(self.menu_background, (0,0))
             self.simulation.draw_text('Aircraft Scanner Simulator', 25, self.simulation.DISPLAY_W / 2, self.simulation.DISPLAY_H / 2 - 20)
             self.simulation.draw_text("Rozpocznij symulacje", 20, self.startx, self.starty)
             self.simulation.draw_text("Opcje", 20, self.optionsx, self.optionsy)

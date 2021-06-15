@@ -1,4 +1,3 @@
-import time
 import asyncio
 
 import pygame
@@ -43,9 +42,9 @@ class Airport():
         for aircraft_data in request_data:
             self.__list_of_aircrafts.append(Aircraft.from_dict(aircraft_data, self.__position,))
 
-    def __send_out_aircraft(self):
+    def send_out_aircraft(self, time):
         for aircraft in self.__list_of_aircrafts:
-            if aircraft.get_departurture_time() == time.time():
+            if aircraft.get_departurture_time() >= time:
                 aircraft.lodge()
 
     def draw(self, window):

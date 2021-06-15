@@ -14,6 +14,7 @@ class FlyingMachine(ABC):
         self.__position = vector.copy(position)
         self.__flying = False
         self.__image = None
+        self.__selected = False
 
     def __str__(self):
         return f"id={self.__id}, name={self.__name}, departure_time={self.__departure_time}, goal_airport={self.__goal_airport}, position={self.__position}"
@@ -42,6 +43,14 @@ class FlyingMachine(ABC):
         self.__flying = True
 
     @property
+    def selected(self):
+        return self.__selected
+
+    @selected.setter
+    def selected(self, value):
+        self.__selected = value
+
+    @property
     def flying(self):
         return self.__flying
 
@@ -57,8 +66,8 @@ class FlyingMachine(ABC):
 
         if distance:
             distance -= 1
-            self.__position.x += dx
-            self.__position.y += dy
+            self.__position.x += dx/4
+            self.__position.y += dy/4
         else:
             self.landed()
 

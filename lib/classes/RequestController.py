@@ -13,7 +13,7 @@ class RequestController:
 
     def request(self, airport: str):
         begin_date = datetime.datetime(2020, 10, 18, 3)
-        end_date = datetime.datetime(2020, 10, 18, 4)
+        end_date = datetime.datetime(2020, 10, 18, 6)
         begin = int(begin_date.replace(tzinfo=datetime.timezone.utc).timestamp())
         end = int(end_date.replace(tzinfo=datetime.timezone.utc).timestamp())
         if begin <= end:
