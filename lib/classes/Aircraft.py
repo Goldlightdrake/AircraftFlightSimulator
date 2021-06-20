@@ -5,6 +5,10 @@ from lib.classes.Vector import Vector
 
 
 class Aircraft(FlyingMachine):
+    """
+            Aircratf class made for calculating the flight path of the plane:
+            - (same as FlyingMaschine)
+            """
 
     def __init__(self, id, name, departure_time, goal_airport, position):
         super().__init__(id, name, departure_time, goal_airport, position)
@@ -35,3 +39,4 @@ class Aircraft(FlyingMachine):
             screen.blit(self.__image_selected, top_left_position.make_int_tuple())
             return
         screen.blit(self.__image, top_left_position.make_int_tuple())
+

@@ -5,6 +5,14 @@ from lib.classes.FindAWay import FindAWay
 
 
 class FlyingMachine(ABC):
+    """
+        FlyingMaschine class made for checking informations about the aircrafts:
+        - id (finding a plane by id)
+        - name (showing on map)
+        - departure time (fixed time to download planes from API)
+        - goal airport (the place of arrival of the aircraft will be shown on the map)
+        - position (vector position of the aircraft)
+        """
 
     def __init__(self, id, name, departure_time, goal_airport, position):
         self.__id = id
@@ -58,7 +66,7 @@ class FlyingMachine(ABC):
         self.__flying = False
 
     def update(self, goal_airport_position):
-        radians = math.atan2(goal_airport_position.y - self.__position.y,goal_airport_position.x - self.__position.x)
+        radians = math.atan2(goal_airport_position.y - self.__position.y, goal_airport_position.x - self.__position.x)
         distance = int(math.hypot(goal_airport_position.x - self.__position.x, goal_airport_position.y - self.__position.y))
 
         dx = math.cos(radians)

@@ -8,6 +8,14 @@ from lib.classes.Vector import Vector
 
 
 class Airport():
+    """
+        Airport class made for supervising the aircrafts
+        - name (string)
+        - position (vector)
+        - list of aircrafts (generate, draw and send out the aircrafts)
+        example init:
+        >>> Airport('s3t5', Vector(3,6))
+        """
     def __init__(self, name: str, position: Vector):
         self.__name = name
         self.__position = position

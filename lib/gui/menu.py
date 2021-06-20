@@ -1,6 +1,15 @@
 import pygame
 
 class Menu():
+    """
+        Menu class was made to store the necessary data and create graphics:
+        - simulation
+        From this class inherit:
+        - MainMenu(Menu)
+        - OptionsMenu(Menu)
+        - CreditsMenu(Menu)
+        example init: Menu()
+        """
     def __init__(self, simulation):
         self.simulation = simulation
         self.mid_w, self.mid_h = self.simulation.DISPLAY_W / 2, self.simulation.DISPLAY_H / 2

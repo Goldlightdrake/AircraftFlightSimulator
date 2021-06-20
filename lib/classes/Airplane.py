@@ -1,3 +1,4 @@
+
 class Airport:
     def __init__(self):
         self.__name = None
@@ -28,5 +29,5 @@ class Airport:
     def generate_list_of_aircrafts(self): #void inicjalizator do stworzenia obiektow aircraftu
         return self.get_list_of_aircrafts  #zadać pytaie do request on daje dictionary, stowrzyc obiekty dodaje do listy
 
-    def __send_out_aircraft(self): #void
+    def __send_out_aircraft(self):
         return True   #while true sprawdzac czy departure time od aircraft na teraz

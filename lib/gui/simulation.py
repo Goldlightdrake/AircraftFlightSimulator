@@ -11,6 +11,11 @@ from lib.classes.Aircraft import Aircraft
 
 
 class Simulation():
+    """
+       Simulation class made to perform the simulation and all related steps:
+       example init:
+       >>>Simulation()
+       """
     def __init__(self):
         pygame.init()
         pygame.display.set_caption("Aircraft Scanner Simulator")
@@ -148,7 +153,7 @@ class Simulation():
 
     def draw_aircrafts(self):
         for aircraft in self.map_holder.list_of_aircrafts:
-            airport_position = Vector(0,0)
+            airport_position = Vector(0, 0)
             for airport in self.map_holder.list_of_airports:
                 if airport.name == aircraft.goal_airport:
                     airport_position = airport.position
